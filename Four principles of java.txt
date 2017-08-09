@@ -1,0 +1,214 @@
+There are four key principles of object orientated programming; Inheritance, Encapsulation, Abstraction and Polymorphism. 
+The following document will outline the key areas of each principle and produce an example to show a throughough understanding. 
+
+
+Encapsulation 
+
+In Java, Encapsulation is a way of wrapping the data and the code acting on the data together. This can be summarised as a joining on the 
+code and data together to form one single unit. 
+When using encapsulation, variables of one class will not be able to be accessed from other classes. They can only be accessed through methods 
+of thier current class. This is known as 'data hiding'. 
+
+The idea behind Encapsulation is to hide implementation details from its users. 
+
+Encapsulation can be achieved in two steps:
+1. Declare the variable of a class private
+2. Provide public setter and getter methods to modify and view the variables table 
+
+Benefits of Encapsulation
+1. The fields of a class can be made read-only or write-only
+2. The class has complete control over what is in the fields
+3. A class can change the data which is in the fields whilst no other modifications need to be made to the code. 
+
+To understand the concept better, an example is below: 
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+public class EncapsulationCar {
+	private String nameCar; 	
+	private Int ageCar;		//declare private variables
+
+	public String getNameCar(){
+		return nameCar;
+	}
+	public Int getAgeCar(){
+		return ageCar; 		
+	}
+	public void setNameCar(String newValue){
+		nameCar = newValue;
+	}
+	public void setAgeCar(Int newValue){
+		ageCar = newValue;			//getter and setter methods have been set-up to read the private data fields
+	}
+}
+public class EncapCar{
+	public static void main (string args[]){ 	
+		EncapsulationCar obj = new EncapsulationCar();	
+		obj.setNameCar("Hyundai");
+		obj.setAgeCar(4);			//sets both the name and age of the car with a specific output
+		System.out.println("The make of car is a " + obj.setNameCar());
+		System.out.println("The age of the car is " + obj.setAgeCar()); //print out the statement plus the valye of NameCar and AgeCar
+	}
+}
+The Output of this would be:
+
+The make of car is a Hyundai
+The age of the car is 4  
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+Abstraction
+
+Abstraction is dealing with ideas rather than events. In Object Orientated Programming it is the process of hiding the implementation details and 
+just leaving the functionality for the user. 
+This means that the user will have information on what the object does but not how it does it.
+
+This can be achieved by using interface and abstract class.
+
+Abstraction is used when you are aware that some code needs to be in a system but you are unsure on what it should look like. 
+
+Here are some keys points to remember about Abstraction:
+1. Use Absraction when you know something needs to be in a class but you are unsure about implementation
+2. 
+
+To better understand this concept, an example is below:
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+public class Main{
+	public static void main(String args[]){
+	Employee test = new Standard();
+	test.run();
+	}
+}
+abstract class Employee{
+	public abstract void run();
+}
+class Standard extends Employee{
+	public void run(){
+	System.out.println("In progress");
+}
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Inheritance 
+
+Inheritance in Java is similar to inheritance in the real world. In real life you can inherit belonging and money from your parents, whereas in Java you can 
+inherit attributes from parent classes. 
+
+In Java, if you inherit properties from another class, you would call that class a super-class. However, if we refer to the class doing the inheriting, that 
+would be called a sub-class i.e Superclass --> class --> sub-class
+
+Inheritance ensures that information is made manageable through classes in a hierarhical order. 
+
+In Java the Systax 'Extend' is used to communicate with Java that a class is inheriting properties from another class. 
+
+There are lots of different types of inheritance, there is:
+1. Single Inheritance
+2. Multi-Level Inheritance
+3. Hierarchical Inheritance
+4. Multiple Inheritance 
+
+When checking to confirm relationships between classes, use "IS A". 
+A good example I have seen of how to show this is below:
+
+public class Animal {  
+}
+
+public class Mammal extends Animal { //class of mammal inherits properties from animal
+}
+
+public class Reptile extends Animal { //class of reptile inherites properties from animal
+}
+
+public class Dog extends Mammal { //class of dog inherits properties from mammal 
+} 
+
+
+Using the above code, we can make general assumptions:
+1. Animal is the superclass of 'Mammal' class as well as 'Reptile' class
+2. 'Mammal' and 'Reptile' are subclasses of Animal class
+3. Dog is the subsclass of both 'Mammal' and 'Animal' classes
+
+Mammel IS A Animal
+Reptile IS A Animal
+Dog IS A Mammal
+Dog IS A Animal
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+class CalcSuper{
+	int x;
+
+	public void addition(int y, int z){
+		x = z + y;
+		System.out.println("The sum of the two number is equal to" + x);
+	}
+}
+public class CalcSub extends CalcSuper{
+	public void multiplication (int y, int z) {
+		x = y * z;
+		System.out.println("The multiplication of the two numbers is equal to" + x);
+}
+	public static void main (String args[]){
+		int y = 5, z = 11;
+		CalcSub demo = new CalcSub();
+		demo.addition(y, z);
+		demo.multiplication(y, z);
+	}
+}
+The output of this would be:
+The sum of the two number is equal to 16
+The multiplication of the two numbers is equal to 55
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Polymorphism
+
+Polymorphism is the last principle we will discuss, it is the ability of an object to take on many forms. 
+Any Java object that can pass at least one IS A test is considered polymorphic. 
+
+The most common use of polymorpishm is when a super class reference is used to refer to its sub class object. 
+
+An example of polymorpisms is writing the same block of code but allowing for various inputs, changing which version of the code is used is dependant
+on the input. 
+
+Advantages of Polymorpism
+1. Same interface could be used for creating methods with different forms of implementation
+2. Implemtation can be replaced by using the same methods
+3. Reduces the volume of work in regard to handling various variables and objects 
+
+To better explain how an object is polymorpic, an example is below:
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Public interface Paint{
+}
+public class Colour{
+}
+public class Red extends Colour implements Paint{
+} 
+
+The red class is now polymorphic as it has multiple inheritance. We can now use IS A to confirm the relationships
+Red IS A Colour
+Red IS A Paint
+Red IS A Red
+Red IS A Object
+
+
+Red r = new Red()
+Colour c = r;
+paint p = r;
+object o = r;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
